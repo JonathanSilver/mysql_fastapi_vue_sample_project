@@ -2,10 +2,20 @@
 
 ## 环境
 
-后端使用conda管理环境：
+后端使用 `uv` 管理环境。
+
+首先，安装 `uv`：
 ```shell
-conda create -n fastapi python=3.12
-pip install -r requirements.txt
+# On macOS and Linux.
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# On Windows.
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+然后同步依赖：
+```shell
+git clone https://github.com/JonathanSilver/mysql_fastapi_vue_sample_project
+cd mysql_fastapi_vue_sample_project/backend
+uv sync
 ```
 
 ## 数据库
@@ -16,7 +26,7 @@ pip install -r requirements.txt
 
 启动：
 ```shell
-uvicorn main:app
+uv run uvicorn main:app
 ```
 
 文档页面：`http://127.0.0.1:8000/docs`
